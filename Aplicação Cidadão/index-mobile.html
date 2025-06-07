@@ -148,3 +148,23 @@
             </button>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Referências de elementos
+            const pages = document.querySelectorAll('.page');
+            const navButtons = document.querySelectorAll('.bottom-nav .nav-button');
+            const notificationModalOverlay = document.getElementById('notification-modal-overlay');
+            const modalTitle = document.getElementById('modal-title');
+            const modalMessage = document.getElementById('modal-message');
+            const modalIcon = document.getElementById('modal-icon');
+            const modalCloseButton = document.getElementById('modal-close-button');
+            const btnSimulateNear = document.getElementById('btn-simulate-near');
+            const btnSimulateFar = document.getElementById('btn-simulate-far');
+            const userLocationDisplay = document.getElementById('user-location-display');
+            const nearbySheltersList = document.getElementById('nearby-shelters-list');
+            const notificationsHistoryList = document.getElementById('notifications-history-list');
+            const fullNotificationsList = document.getElementById('full-notifications-list');
+            const allSheltersList = document.getElementById('shelters-list-all');
+
+            let userLocation = null;
+            let notifications = []; // Histórico de notificações
