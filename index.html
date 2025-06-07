@@ -1,1 +1,484 @@
 <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeRoute</title>
+    <!-- Vincula o arquivo CSS externo -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Cabeçalho Principal (Menu Superior) -->
+    <header id="main-header">
+        <h1 class="site-title">DisasterLink</h1>
+
+        <!-- Navegação Principal (sempre visível em desktop) -->
+        <nav class="desktop-nav">
+            <a href="#" data-page="dashboard" class="nav-link">
+                <span class="icon-placeholder">
+                    <!-- Home icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </span>
+                <span>Página Inicial</span>
+            </a>
+            <a href="#" data-page="shelters" class="nav-link">
+                <span class="icon-placeholder">
+                    <!-- MapPin icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                <span>Abrigos</span>
+            </a>
+            <a href="#" data-page="notifications" class="nav-link">
+                <span class="icon-placeholder">
+                    <!-- BellRing icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell-ring"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.36 17.06a2 2 0 1 0 3.28 0"/><path d="M12 21v-4"/></svg>
+                </span>
+                <span>Notificações</span>
+            </a>
+            <a href="#" data-page="analytics" class="nav-link">
+                <span class="icon-placeholder">
+                    <!-- BarChart2 icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bar-chart-2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+                </span>
+                <span>Análises Geos.</span>
+            </a>
+            <a href="#" data-page="volunteers" class="nav-link">
+                <span class="icon-placeholder">
+                    <!-- Briefcase icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase"><path d="M12.5 22H4a2 2 0 0 1-2-2V7.76a2 2 0 0 1 .62-1.46L6.5 2.5a2 2 0 0 1 1.5-1.5h7a2 2 0 0 1 2 2v2.5L21.4 6.33a2 2 0 0 1 .6 1.43V20a2 2 0 0 1-2 2h-6.5"/><path d="M22 6H2"/><path d="M6 6v2"/><path d="M18 6v2"/></svg>
+                </span>
+                <span>Voluntários</span>
+            </a>
+            <a href="#" data-page="members" class="nav-link">
+                <span class="icon-placeholder">
+                    <!-- Users icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </span>
+                <span>Integrantes</span>
+            </a>
+            <a href="#" data-page="faq" class="nav-link">
+                <span class="icon-placeholder">
+                    <!-- HelpCircle icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-help-circle"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+                </span>
+                <span>FAQ</span>
+            </a>
+            <a href="#" data-page="contact" class="nav-link">
+                <span class="icon-placeholder">
+                    <!-- Mail icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </span>
+                <span>Contato</span>
+            </a>
+        </nav>
+    
+    </header>
+    <!-- Conteúdo Principal -->
+    <main class="main-content-area">
+        <!-- Página Inicial (Dashboard) -->
+        <section id="dashboard-page" class="page-section active">
+            <h1 class="page-title">Página Inicial (Dashboard)</h1>
+
+            <!-- Seção de Visão Geral Rápida -->
+            <div class="card-grid">
+                <!-- Cards -->
+                <div class="card info-card">
+                    <div>
+                        <h3 class="card-title">Abrigos Ativos</h3>
+                        <p class="card-value primary-color">12</p>
+                    </div>
+                    <span class="card-icon blue-icon">
+                        <!-- MapPin icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </span>
+                </div>
+
+                <div class="card info-card">
+                    <div>
+                        <h3 class="card-title">Alertas Ativos</h3>
+                        <p class="card-value alert-color">3</p>
+                    </div>
+                    <span class="card-icon red-icon">
+                        <!-- BellRing icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell-ring"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.36 17.06a2 2 0 1 0 3.28 0"/><path d="M12 21v-4"/></svg>
+                    </span>
+                </div>
+
+                <div class="card info-card">
+                    <div>
+                        <h3 class="card-title">População Atingida (Estimado)</h3>
+                        <p class="card-value warning-color">~2,500</p>
+                    </div>
+                    <span class="card-icon orange-icon">
+                        <!-- Users icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Seção de Visualização de Mapa (Placeholder) -->
+            <div class="card map-placeholder">
+                <p>Mapa Interativo com Abrigos e Zonas de Desastre (Integração futura com Mapbox/Google Maps)</p>
+            </div>
+
+            <!-- Seção de Notificações Recentes -->
+            <div class="card">
+                <h2 class="section-title">Notificações Recentes</h2>
+                <ul class="notification-list">
+                    <li class="notification-item">
+                        <span class="notification-icon red-icon">
+                            <!-- BellRing icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell-ring"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.36 17.06a2 2 0 1 0 3.28 0"/><path d="M12 21v-4"/></svg>
+                        </span>
+                        <span><strong class="notification-strong red-text">Alerta: Evacuação Urgente!</strong> Área de Pinheiros. Data: 05/06/2025 15:30</span>
+                    </li>
+                    <li class="notification-item">
+                        <span class="notification-icon blue-icon">
+                            <!-- MapPin icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </span>
+                        <span><strong class="notification-strong blue-text">Abrigo Aberto:</strong> Escola Municipal, Rua Exemplo, 123. Data: 05/06/2025 14:00</span>
+                    </li>
+                    <li class="notification-item">
+                        <span class="notification-icon orange-icon">
+                            <!-- HelpCircle icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-help-circle"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+                        </span>
+                        <span><strong class="notification-strong orange-text">Atualização:</strong> Chuvas intensas persistirão nas próximas 6h. Data: 05/06/2025 13:45</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!-- Página de Abrigos (Placeholder) -->
+        <section id="shelters-page" class="page-section">
+            <h1 class="page-title">Gerenciamento de Abrigos</h1>
+            <p class="page-description">Aqui será a interface para adicionar, editar e visualizar os abrigos, suas capacidades e recursos.</p>
+            <!-- Exemplo de Conteúdo para Abrigos -->
+            <div class="card">
+                <h2 class="section-title">Abrigos Registrados</h2>
+                <ul class="list-items">
+                    <li class="list-item">
+                        <span class="list-icon blue-icon">
+                            <!-- MapPin icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </span>
+                        <span><strong>Abrigo A:</strong> Escola Municipal, Rua X, 100. Capacidade: 500 (200 ocupados)</span>
+                    </li>
+                    <li class="list-item">
+                        <span class="list-icon blue-icon">
+                            <!-- MapPin icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </span>
+                        <span><strong>Abrigo B:</strong> Ginásio Público, Av. Y, 50. Capacidade: 300 (280 ocupados)</span>
+                    </li>
+                </ul>
+                <button class="button primary-button mt-4">Adicionar Novo Abrigo</button>
+            </div>
+        </section>
+
+        <!-- Página de Notificações (Placeholder) -->
+        <section id="notifications-page" class="page-section">
+            <h1 class="page-title">Sistema de Notificações</h1>
+            <p class="page-description">Interface para criar, enviar e gerenciar notificações geolocalizadas para a população.</p>
+            <!-- Exemplo de Conteúdo para Notificações -->
+            <div class="card">
+                <h2 class="section-title">Enviar Nova Notificação</h2>
+                <form class="form-layout" id="notification-form">
+                    <div class="form-group">
+                        <label for="notification-message">Mensagem:</label>
+                        <textarea id="notification-message" name="message" rows="3" class="form-input" required></textarea>
+                        <div class="error-message" id="message-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="notification-radius">Raio de Notificação (km):</label>
+                        <input type="number" id="notification-radius" name="radius" value="5" class="form-input" required min="1" />
+                        <div class="error-message" id="radius-error"></div>
+                    </div>
+                    <button type="submit" class="button alert-button">Enviar Alerta de Emergência</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Página de Análises Geos. (Placeholder) -->
+        <section id="analytics-page" class="page-section">
+            <h1 class="page-title">Análises Geospatiais</h1>
+            <p class="page-description">Visualização de dados de população, áreas de risco e otimização de rotas.</p>
+            <!-- Exemplo de Conteúdo para Análises -->
+            <div class="card map-placeholder">
+                Gráficos e Mapas Interativos (Futura integração D3.js ou Recharts)
+            </div>
+        </section>
+
+        <!-- Página de Voluntários (Placeholder) -->
+        <section id="volunteers-page" class="page-section">
+            <h1 class="page-title">Gerenciamento de Voluntários</h1>
+            <p class="page-description">Gerencie voluntários, suas habilidades e atribuições durante desastres.</p>
+            <!-- Exemplo de Conteúdo para Voluntários -->
+            <div class="card">
+                <h2 class="section-title">Voluntários Cadastrados</h2>
+                <ul class="list-items">
+                    <li class="list-item">
+                        <span class="list-icon green-icon">
+                            <!-- User icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </span>
+                        <span><strong>Ana Costa:</strong> Médico(a), Disponível</span>
+                    </li>
+                    <li class="list-item">
+                        <span class="list-icon green-icon">
+                            <!-- User icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </span>
+                        <span><strong>Bruno Lima:</strong> Logística, Disponível</span>
+                    </li>
+                </ul>
+                <button class="button primary-button mt-4">Buscar Voluntários</button>
+            </div>
+        </section>
+
+        <!-- Página de Integrantes -->
+        <section id="members-page" class="page-section">
+            <h1 class="page-title">Integrantes da Equipe</h1>
+            <p class="page-description">Conheça os profissionais por trás da SafeRoute</p>
+
+            <div class="member-grid">
+                <div class="card member-card">
+                    <img src="https://placehold.co/100x100/E5E7EB/4B5563?text=Foto" alt="Foto de Integrante" class="member-photo" />
+                    <h3 class="member-name">Gregory Azevedo</h3>
+                    <p class="member-role">Chefe de Operações</p>
+                    <div class="member-links">
+                        <a href="#" class="member-link">GitHub</a>
+                        <a href="#" class="member-link">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="card member-card">
+                    <img src="https://placehold.co/100x100/E5E7EB/4B5563?text=Foto" alt="Foto de Integrante" class="member-photo" />
+                    <h3 class="member-name">Samara Vilela</h3>
+                    <p class="member-role">Coordenadora de Abrigos</p>
+                    <div class="member-links">
+                        <a href="#" class="member-link">GitHub</a>
+                        <a href="#" class="member-link">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="card member-card">
+                    <img src="https://placehold.co/100x100/E5E7EB/4B5563?text=Foto" alt="Foto de Integrante" class="member-photo" />
+                    <h3 class="member-name">Fernando Charles</h3>
+                    <p class="member-role">Especialista em TI</p>
+                    <div class="member-links">
+                        <a href="#" class="member-link">GitHub</a>
+                        <a href="#" class="member-link">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Página de FAQ -->
+        <section id="faq-page" class="page-section">
+            <h1 class="page-title">Perguntas Frequentes (FAQ)</h1>
+            <p class="page-description">Encontre respostas para as perguntas mais comuns sobre o sistema.</p>
+
+            <div class="faq-list">
+                <!-- Pergunta 1 -->
+                <div class="card faq-item">
+                    <h3 class="faq-question">Como os abrigos são atualizados?</h3>
+                    <p class="faq-answer">Os abrigos são atualizados em tempo real pela equipe da Defesa Civil através deste portal, informando capacidade, ocupação e recursos disponíveis.</p>
+                </div>
+                <!-- Pergunta 2 -->
+                <div class="card faq-item">
+                    <h3 class="faq-question">Com que frequência as notificações são enviadas?</h3>
+                    <p class="faq-answer">As notificações são enviadas instantaneamente em caso de emergência ou quando há atualizações críticas sobre abrigos ou zonas de risco.</p>
+                </div>
+                <!-- Pergunta 3 -->
+                <div class="card faq-item">
+                    <h3 class="faq-question">Como posso me voluntariar?</h3>
+                    <p class="faq-answer">Você pode se cadastrar como voluntário na seção "Voluntários" do portal, preenchendo seus dados e áreas de interesse. Nossa equipe entrará em contato para mais informações.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Página de Contato -->
+        <section id="contact-page" class="page-section">
+            <h1 class="page-title">Contato</h1>
+            <p class="page-description">Entre em contato conosco para dúvidas, sugestões ou suporte.</p>
+
+            <div class="card contact-info">
+                <p class="contact-detail">
+                    <span class="icon-small blue-icon">
+                        <!-- Mail icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </span>
+                    <span>Email: <a href="mailto:contato@disasterlink.com" class="link-text">contato@disasterlink.com</a></span>
+                </p>
+                <p class="contact-detail">
+                    <span class="icon-small blue-icon">
+                        <!-- BellRing icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell-ring"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.36 17.06a2 2 0 1 0 3.28 0"/><path d="M12 21v-4"/></svg>
+                    </span>
+                    <span>Telefone de Emergência: 199 (Defesa Civil)</span>
+                </p>
+                <p class="contact-detail">
+                    <span class="icon-small blue-icon">
+                        <!-- MapPin icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </span>
+                    <span>Endereço: Rua da Defesa, 123, São Paulo - SP</span>
+                </p>
+                <p class="contact-detail">Horário de Atendimento: Segunda a Sexta, 9h às 17h (Em emergências, 24/7)</p>
+                <hr class="divider" />
+                <h3 class="section-subtitle">Envie uma Mensagem</h3>
+                <form class="form-layout" id="contact-form">
+                    <div class="form-group">
+                        <label for="contact-name">Nome:</label>
+                        <input type="text" id="contact-name" name="name" class="form-input" required />
+                        <div class="error-message" id="contact-name-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email:</label>
+                        <input type="email" id="contact-email" name="email" class="form-input" required />
+                        <div class="error-message" id="contact-email-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Mensagem:</label>
+                        <textarea id="contact-message" name="message" rows="4" class="form-input" required></textarea>
+                        <div class="error-message" id="contact-message-error"></div>
+                    </div>
+                    <button type="submit" class="button primary-button">Enviar Mensagem</button>
+                    <div class="success-message" id="contact-success-message"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pageSections = document.querySelectorAll('.page-section');
+
+
+            // Function to show the active page
+            function showPage(pageId) {
+                pageSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById(pageId).classList.add('active');
+            }
+
+            // Activate the correct navigation link
+            function activateNavLink(pageId) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active-link');
+                    const iconSvg = link.querySelector('svg'); // Direct SVG selection
+                    if (iconSvg) {
+                         iconSvg.classList.remove('active-icon-color'); // Remove specific active color for icon
+                    }
+                });
+
+                const activeLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active-link');
+                    const activeIconSvg = activeLink.querySelector('svg'); // Direct SVG selection
+                    if (activeIconSvg) {
+                        activeIconSvg.classList.add('active-icon-color'); // Add specific active color for icon
+                    }
+                }
+            }
+
+            // Event Listeners for navigation
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = link.getAttribute('data-page') + '-page';
+                    showPage(pageId);
+                    activateNavLink(link.getAttribute('data-page'));
+                });
+            });
+
+            
+            // --- Form Validation ---
+
+            // Contact Form Validation
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    let isValid = true;
+
+                    const nameInput = document.getElementById('contact-name');
+                    const emailInput = document.getElementById('contact-email');
+                    const messageInput = document.getElementById('contact-message');
+                    const successMessage = document.getElementById('contact-success-message');
+
+                    document.getElementById('contact-name-error').textContent = '';
+                    document.getElementById('contact-email-error').textContent = '';
+                    document.getElementById('contact-message-error').textContent = '';
+                    successMessage.textContent = '';
+                    successMessage.classList.remove('show');
+
+                    if (nameInput.value.trim() === '') {
+                        document.getElementById('contact-name-error').textContent = 'O nome é obrigatório.';
+                        isValid = false;
+                    }
+
+                    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (emailInput.value.trim() === '') {
+                        document.getElementById('contact-email-error').textContent = 'O email é obrigatório.';
+                        isValid = false;
+                    } else if (!emailPattern.test(emailInput.value.trim())) {
+                        document.getElementById('contact-email-error').textContent = 'Por favor, insira um email válido.';
+                        isValid = false;
+                    }
+
+                    if (messageInput.value.trim() === '') {
+                        document.getElementById('contact-message-error').textContent = 'A mensagem é obrigatória.';
+                        isValid = false;
+                    }
+
+                    if (isValid) {
+                        alert('Mensagem enviada com sucesso! Em breve entraremos em contato.'); // Consider replacing with a custom modal
+                        successMessage.textContent = 'Mensagem enviada com sucesso! Em breve entraremos em contato.';
+                        successMessage.classList.add('show');
+                        contactForm.reset();
+                    }
+                });
+            }
+
+            // Notification Form Validation
+            const notificationForm = document.getElementById('notification-form');
+            if (notificationForm) {
+                notificationForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    let isValid = true;
+
+                    const messageInput = document.getElementById('notification-message');
+                    const radiusInput = document.getElementById('notification-radius');
+
+                    document.getElementById('message-error').textContent = '';
+                    document.getElementById('radius-error').textContent = '';
+
+                    if (messageInput.value.trim() === '') {
+                        document.getElementById('message-error').textContent = 'A mensagem é obrigatória.';
+                        isValid = false;
+                    }
+
+                    if (radiusInput.value.trim() === '') {
+                        document.getElementById('radius-error').textContent = 'O raio é obrigatório.';
+                        isValid = false;
+                    } else if (parseInt(radiusInput.value) < 1) {
+                        document.getElementById('radius-error').textContent = 'O raio deve ser no mínimo 1 km.';
+                        isValid = false;
+                    }
+
+                    if (isValid) {
+                        alert('Notificação enviada com sucesso!'); 
+                        notificationForm.reset();
+                    }
+                });
+            }
+
+            // Initial setup: show dashboard and activate corresponding link
+            showPage('dashboard-page');
+            activateNavLink('dashboard');
+        });
+    </script>
+</body>
+</html>
