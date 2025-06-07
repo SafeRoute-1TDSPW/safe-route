@@ -392,3 +392,65 @@ button {
     color: var(--tertiary-blue); /* Cor padrão para ícone de modal */
 }
 
+/* --- Media Queries para Responsividade --- */
+
+/* Versão para Tablets (mínimo de 600px) */
+@media (min-width: 600px) {
+    body {
+        padding: 2rem; /* Adiciona padding ao redor do container para tablets */
+    }
+    .mobile-app-container {
+        border-radius: 1rem; /* Cantos arredondados visíveis em tablets */
+        height: calc(100vh - 4rem); /* Altura com margem superior/inferior */
+        max-width: 768px; /* Max width para tablets */
+    }
+    .main-content-area {
+        padding: 1.5rem; /* p-6 */
+    }
+    .action-buttons-grid {
+        grid-template-columns: repeat(2, 1fr); /* Mantém 2 colunas */
+    }
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr); /* Abrigos e Notificações em 2 colunas */
+    }
+    .bottom-nav {
+        height: 4.5rem; /* Altura um pouco maior para tablets */
+    }
+    .nav-button-text {
+        font-size: 0.875rem; /* text-sm */
+    }
+}
+
+/* Versão para Desktops (mínimo de 1024px) */
+@media (min-width: 1024px) {
+    .mobile-app-container {
+        max-width: 1024px; /* Mais largo para desktops */
+        height: calc(100vh - 6rem); /* Mais margem */
+    }
+    .main-content-area {
+        padding: 2rem; /* p-8 */
+    }
+    .action-buttons-grid {
+        grid-template-columns: repeat(2, 1fr); /* Mantém 2 colunas ou ajusta se necessário */
+    }
+    .card-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 colunas em desktop */
+    }
+    .page-title {
+        font-size: 2.5rem; /* text-4xl */
+    }
+    .section-title {
+        font-size: 1.75rem; /* text-3xl */
+    }
+    .bottom-nav {
+        height: 5rem; /* Altura maior para desktop */
+    }
+    .nav-button svg {
+        width: 1.75rem; /* 28px */
+        height: 1.75rem; /* 28px */
+    }
+    .nav-button-text {
+        font-size: 0.9rem; /* Levemente maior */
+    }
+}
+
