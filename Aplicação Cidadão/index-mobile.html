@@ -168,3 +168,35 @@
 
             let userLocation = null;
             let notifications = []; // Histórico de notificações
+// Dados mock de abrigos (Nome, Lat, Lng, Capacidade, Ocupação)
+const mockShelters = [
+                { id: 's1', name: 'Escola Central', lat: -23.55052, lng: -46.633309, capacity: 500, occupied: 150, status: 'Aberto' },
+                { id: 's2', name: 'Ginásio Comunitário', lat: -23.56010, lng: -46.650000, capacity: 300, occupied: 280, status: 'Quase Cheio' },
+                { id: 's3', name: 'Centro Cultural', lat: -23.57000, lng: -46.640000, capacity: 200, occupied: 50, status: 'Aberto' },
+                { id: 's4', name: 'Ponto de Apoio Remoto', lat: -23.40000, lng: -46.500000, capacity: 100, occupied: 10, status: 'Aberto' },
+                { id: 's5', name: 'Abrigo de Emergência Urbano', lat: -23.55000, lng: -46.634000, capacity: 400, occupied: 0, status: 'Aberto' }, // Muito perto do ponto de simulação
+            ];
+
+            // Função para calcular a distância entre duas coordenadas (Haversine Formula simplificada)
+            const calculateDistance = (lat1, lon1, lat2, lon2) => {
+                const R = 6371; // Raio da Terra em km
+                const dLat = (lat2 - lat1) * (Math.PI / 180);
+                const dLon = (lon2 - lon1) * (Math.PI / 180);
+                const a =
+                    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                    Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+                    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+                const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                return R * c;
+            };
+
+            // Função para mostrar o modal de notificação
+            function showNotificationModal(title, message, iconSVG, iconColorClass = 'primary-blue-icon') {
+                modalTitle.textContent = title;
+                modalMessage.textContent = message;
+                modalIcon.innerHTML = iconSVG; // Insere o SVG diretamente
+                modalIcon.className = 'icon-placeholder large-icon modal-icon ' + iconColorClass; // Aplica classes CSS
+
+                notificationModalOverlay.classList.add('show');
+            }
+            
