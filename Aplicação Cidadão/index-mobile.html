@@ -81,4 +81,70 @@
                     <!-- Abrigos serão injetados via JS -->
                 </ul>
             </div>
-            
+            <!-- Notifications List Page -->
+            <div id="notifications-list-page" class="page">
+                <h1 class="page-title">Minhas Notificações</h1>
+                <p class="page-description">Todas as notificações recebidas serão listadas aqui.</p>
+                <ul id="full-notifications-list" class="list-items">
+                     <li class="list-item-placeholder">Nenhuma notificação ainda.</li>
+                </ul>
+            </div>
+
+            <!-- Profile Page -->
+            <div id="profile-page" class="page">
+                <h1 class="page-title">Meu Perfil</h1>
+                <div class="card profile-card">
+                    <div class="profile-header">
+                        <span class="icon-placeholder profile-avatar">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </span>
+                        <div>
+                            <p class="profile-name">Nome do Usuário</p>
+                            <p class="profile-email">contato@email.com</p>
+                        </div>
+                    </div>
+                    <p class="profile-description">Configurações de emergência e contatos.</p>
+                    <button class="button primary-button">Editar Perfil</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Barra de Navegação Inferior -->
+        <nav class="bottom-nav">
+            <button id="nav-dashboard" class="nav-button">
+                <span class="icon-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </span>
+                <span class="nav-button-text">Início</span>
+            </button>
+            <button id="nav-shelters" class="nav-button">
+                <span class="icon-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                <span class="nav-button-text">Abrigos</span>
+            </button>
+            <button id="nav-notifications" class="nav-button">
+                <span class="icon-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell-ring"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.36 17.06a2 2 0 1 0 3.28 0"/><path d="M12 21v-4"/></svg>
+                </span>
+                <span class="nav-button-text">Alertas</span>
+            </button>
+            <button id="nav-profile" class="nav-button">
+                <span class="icon-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </span>
+                <span class="nav-button-text">Perfil</span>
+            </button>
+        </nav>
+    </div>
+    <!-- Modal de Notificação -->
+    <div id="notification-modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <span id="modal-icon" class="icon-placeholder large-icon modal-icon"></span>
+            <h3 id="modal-title" class="modal-title"></h3>
+            <p id="modal-message" class="modal-message"></p>
+            <button id="modal-close-button" class="button primary-button modal-button">
+                OK
+            </button>
+        </div>
+    </div>
