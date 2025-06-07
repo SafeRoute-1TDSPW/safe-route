@@ -200,3 +200,158 @@ const mockShelters = [
                 notificationModalOverlay.classList.add('show');
             }
             
+            // Função para fechar o modal de notificação
+            function closeNotificationModal() {
+                notificationModalOverlay.classList.remove('show');
+            }
+
+            // Função para renderizar a lista de abrigos próximos
+            function renderNearbyShelters() {
+                nearbySheltersList.innerHTML = ''; // Limpa a lista existente
+
+                if (!userLocation) {
+                    nearbySheltersList.innerHTML = '<li class="list-item-placeholder">Simule sua localização para ver abrigos próximos.</li>';
+                    return;
+                }
+
+                const nearby = mockShelters.filter(shelter => {
+                    const distance = calculateDistance(userLocation.lat, userLocation.lng, shelter.lat, shelter.lng);
+                    return distance <= 20; // Mostra abrigos até 20km para demonstração
+                });
+
+                if (nearby.length === 0) {
+                    nearbySheltersList.innerHTML = '<li class="list-item-placeholder">Nenhum abrigo próximo encontrado (dentro de 20km).</li>';
+                } else {
+                    nearby.forEach(shelter => {
+                        const distance = calculateDistance(userLocation.lat, userLocation.lng, shelter.lat, shelter.lng);
+                        const listItem = document.createElement('li');
+                        listItem.className = 'list-item';
+                        listItem.innerHTML = `
+                            <span class="icon-placeholder small-icon blue-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </span>
+                            <div>
+                                <p class="item-title">${shelter.name}</p>
+                                <p class="item-description">Capacidade: ${shelter.occupied}/${shelter.capacity} | Status: ${shelter.status}</p>
+                                <p class="item-distance">Distância: ${distance.toFixed(2)} km</p>
+                            </div>
+                        `;
+                        nearbySheltersList.appendChild(listItem);
+                    });
+                }
+            }
+
+            // Função para renderizar o histórico de notificações
+            function renderNotificationsHistory() {
+                [notificationsHistoryList, fullNotificationsList].forEach(listElement => {
+                    listElement.innerHTML = '';
+                    if (notifications.length === 0) {
+                        listElement.innerHTML = '<li class="list-item-placeholder">Nenhuma notificação ainda.</li>';
+                    } else {
+                        notifications.forEach(notification => {
+                            const listItem = document.createElement('li');
+                            listItem.className = 'list-item';
+                            // Define a cor do ícone com base no tipo de notificação
+                            const iconClass = notification.type === 'proximity' ? 'blue-icon' : (notification.type === 'alert' ? 'red-icon' : 'default-icon');
+                            const iconSVG = notification.type === 'proximity' ? `
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            ` : `
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell-ring"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.36 17.06a2 2 0 1 0 3.28 0"/><path d="M12 21v-4"/></svg>
+                            `;
+                            listItem.innerHTML = `
+                                <span class="icon-placeholder small-icon ${iconClass}">${iconSVG}</span>
+                                <div>
+                                    <p class="item-title">${notification.title}</p>
+                                    <p class="item-description">${notification.message}</p>
+                                </div>
+                            `;
+                            listElement.appendChild(listItem);
+                        });
+                    }
+                });
+            }
+
+            // Função para simular o monitoramento de localização e exibir notificações de proximidade
+            function checkProximityAndNotify() {
+                if (!userLocation) return;
+
+                mockShelters.forEach(shelter => {
+                    const distance = calculateDistance(userLocation.lat, userLocation.lng, shelter.lat, shelter.lng);
+                    // Se o usuário está dentro de 5km de um abrigo e ainda não foi notificado sobre ele
+                    if (distance <= 5 && !notifications.some(n => n.id === `proximity-${shelter.id}`)) {
+                        const newNotification = {
+                            id: `proximity-${shelter.id}`,
+                            type: 'proximity',
+                            title: `Abrigo Próximo: ${shelter.name} está a ${distance.toFixed(2)} km!`,
+                            message: `Capacidade: ${shelter.occupied}/${shelter.capacity}. Status: ${shelter.status}.`,
+                        };
+                        notifications.unshift(newNotification); // Adiciona ao início do array
+                        renderNotificationsHistory(); // Atualiza a UI das notificações
+                        const iconSVG = `
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        `;
+                        showNotificationModal(newNotification.title, newNotification.message, iconSVG, 'blue-icon');
+                    }
+                });
+                renderNearbyShelters(); // Sempre atualiza a lista de abrigos próximos no dashboard
+            }
+
+            // Função para simular atualização da localização do usuário
+            function simulateLocationUpdate(lat, lng) {
+                userLocation = { lat, lng };
+                notifications = []; // Limpa notificações para simular novas ao mudar de local
+                userLocationDisplay.textContent = `Localização atual: Lat ${lat.toFixed(5)}, Lng ${lng.toFixed(5)}`;
+                userLocationDisplay.classList.remove('hidden');
+                checkProximityAndNotify(); // Verifica proximidade com a nova localização
+            }
+
+            // Função para mudar a página exibida
+            function showPage(pageId) {
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                document.getElementById(pageId).classList.add('active');
+
+                // Atualiza o estado da barra de navegação
+                navButtons.forEach(button => {
+                    button.classList.remove('active-nav-button');
+                });
+                document.getElementById(`nav-${pageId.replace('-page', '')}`).classList.add('active-nav-button');
+            }
+
+            // Função para renderizar todos os abrigos na página 'Abrigos'
+            function renderAllShelters() {
+                allSheltersList.innerHTML = '';
+                mockShelters.forEach(shelter => {
+                    const listItem = document.createElement('li');
+                    listItem.className = 'list-item';
+                    const statusClass = shelter.status === 'Aberto' ? 'status-open' : (shelter.status === 'Quase Cheio' ? 'status-warning' : 'status-closed');
+                    listItem.innerHTML = `
+                        <span class="icon-placeholder small-icon blue-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </span>
+                        <div>
+                            <p class="item-title">${shelter.name}</p>
+                            <p class="item-description">Capacidade: ${shelter.occupied}/${shelter.capacity} | Status: <span class="${statusClass}">${shelter.status}</span></p>
+                            <button class="button primary-button small-button mt-2">Ver no Mapa</button>
+                        </div>
+                    `;
+                    allSheltersList.appendChild(listItem);
+                });
+            }
+
+            // Event Listeners
+            modalCloseButton.addEventListener('click', closeNotificationModal);
+            btnSimulateNear.addEventListener('click', () => simulateLocationUpdate(-23.55010, -46.63400));
+            btnSimulateFar.addEventListener('click', () => simulateLocationUpdate(-23.60000, -46.80000));
+
+            navButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const pageId = button.id.replace('nav-', '') + '-page';
+                    showPage(pageId);
+                    if (pageId === 'shelters-page') {
+                        renderAllShelters();
+                    }
+                });
+            });
+            
