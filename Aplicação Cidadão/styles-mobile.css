@@ -158,3 +158,124 @@ button {
     gap: 1rem; /* gap-4 */
     margin-bottom: 1.5rem; /* space-y-6 */
 }
+
+/* Simulação de Localização */
+.location-simulator-card {
+    margin-bottom: 1.5rem;
+}
+.location-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* space-y-2 */
+    margin-top: 0.75rem; /* mt-3 */
+}
+.location-display-text {
+    font-size: 0.875rem; /* text-sm */
+    color: var(--neutral-text-medium);
+    margin-top: 0.5rem;
+}
+
+/* Listas de itens (abrigos, notificações) */
+.list-items {
+    margin-top: 0.75rem; /* space-y-2 */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.list-item {
+    display: flex;
+    align-items: flex-start; /* Alinha o ícone ao topo do texto */
+    gap: 0.75rem; /* space-x-3 */
+    padding: 0.75rem; /* p-3 */
+    background-color: var(--neutral-medium-gray); /* bg-gray-50 */
+    border-radius: 0.5rem; /* rounded-lg */
+    border: 1px solid var(--neutral-medium-gray); /* border-gray-100 */
+}
+.list-item-placeholder {
+    font-size: 0.875rem; /* text-sm */
+    color: var(--neutral-text-light);
+    padding: 0.75rem;
+    text-align: center;
+}
+.item-title {
+    font-weight: 600; /* font-semibold */
+    color: var(--neutral-dark-gray);
+}
+.item-description {
+    font-size: 0.875rem; /* text-sm */
+    color: var(--neutral-text-medium);
+}
+.item-distance {
+    font-size: 0.75rem; /* text-xs */
+    color: var(--neutral-text-light);
+}
+.status-open { color: var(--success-green); font-weight: 500; }
+.status-warning { color: var(--warning-orange); font-weight: 500; }
+.status-closed { color: var(--alert-red); font-weight: 500; }
+
+/* --- Botões --- */
+.button {
+    padding: 1.25rem; /* p-5 */
+    border-radius: 0.75rem; /* rounded-xl */
+    font-weight: 600; /* font-semibold */
+    color: var(--neutral-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem; /* space-y-2 */
+    text-align: center;
+    box-shadow: var(--shadow-md);
+}
+.button:active {
+    transform: translateY(1px); /* Pequeno efeito de clique */
+    box-shadow: var(--shadow-sm);
+}
+
+.primary-button { background-color: var(--tertiary-blue); }
+.primary-button:hover { background-color: var(--secondary-blue); }
+.primary-button:active { background-color: #1a4dbe; } /* Tom mais escuro */
+
+.secondary-button { background-color: var(--neutral-text-light); }
+.secondary-button:hover { background-color: var(--neutral-text-medium); }
+.secondary-button:active { background-color: #3b424d; }
+
+.success-button { background-color: var(--success-green); }
+.success-button:hover { background-color: var(--success-green-dark); }
+.success-button:active { background-color: #12833a; }
+
+.warning-button { background-color: var(--warning-orange); }
+.warning-button:hover { background-color: var(--warning-orange-dark); }
+.warning-button:active { background-color: #c0510b; }
+
+.small-button {
+    padding: 0.75rem 1rem; /* p-3 px-4 */
+    font-size: 0.875rem; /* text-sm */
+    flex-direction: row; /* Botões menores podem ter texto e ícone lado a lado */
+    gap: 0.25rem;
+    height: auto; /* Remove altura fixa */
+}
+
+/* --- Ícones SVG --- */
+.icon-placeholder svg {
+    color: currentColor; /* Usa a cor do texto do pai */
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.large-icon svg { width: 2rem; height: 2rem; /* 32px */ }
+.small-icon svg { width: 1.25rem; height: 1.25rem; /* 20px */ }
+.profile-avatar svg { width: 4rem; height: 4rem; /* 64px */ }
+
+.blue-icon svg { color: var(--tertiary-blue); }
+.red-icon svg { color: var(--alert-red); }
+.orange-icon svg { color: var(--warning-orange); }
+.green-icon svg { color: var(--success-green); }
+
+
+/* --- Perfil --- */
+.profile-card {
+    align-items: center;
+    text-align: center;
+}
