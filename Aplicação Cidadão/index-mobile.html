@@ -13,6 +13,7 @@
             <!-- Dashboard Page -->
             <div id="dashboard-page" class="page active">
                 <h1 class="page-title">Olá, Cidadão!</h1>
+
                 <!-- Cartão de Alertas Ativos -->
                 <div class="card alert-card">
                     <span class="icon-placeholder large-icon">
@@ -23,6 +24,7 @@
                         <p class="card-description">Chuvas intensas nas próximas 6 horas. Evite áreas de risco.</p>
                     </div>
                 </div>
+
                 <!-- Botões de Ação Rápida -->
                 <div class="action-buttons-grid">
                     <button id="btn-estou-seguro" class="button success-button">
@@ -38,3 +40,45 @@
                         <span class="button-text">Preciso de Ajuda</span>
                     </button>
                 </div>
+
+                <!-- Simulação de Localização para Teste -->
+                <div class="card location-simulator-card">
+                    <h2 class="section-title">Simular Localização:</h2>
+                    <p class="section-description">Clique para testar notificações de proximidade a abrigos.</p>
+                    <div class="location-buttons">
+                        <button id="btn-simulate-near" class="button primary-button small-button">
+                            Simular Próximo ao Abrigo (5km)
+                        </button>
+                        <button id="btn-simulate-far" class="button secondary-button small-button">
+                            Simular Localização Longe
+                        </button>
+                    </div>
+                    <p id="user-location-display" class="location-display-text hidden"></p>
+                </div>
+
+                <!-- Abrigos Próximos -->
+                <div class="card">
+                    <h2 class="section-title">Abrigos Próximos:</h2>
+                    <ul id="nearby-shelters-list" class="list-items">
+                        <li class="list-item-placeholder">Simule sua localização para ver abrigos próximos.</li>
+                    </ul>
+                </div>
+
+                <!-- Histórico de Notificações -->
+                <div class="card">
+                    <h2 class="section-title">Notificações:</h2>
+                    <ul id="notifications-history-list" class="list-items">
+                        <li class="list-item-placeholder">Nenhuma notificação ainda.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Shelters Page -->
+            <div id="shelters-page" class="page">
+                <h1 class="page-title">Abrigos</h1>
+                <p class="page-description">Detalhes e navegação para abrigos serão implementados aqui.</p>
+                <ul id="shelters-list-all" class="list-items all-shelters-list">
+                    <!-- Abrigos serão injetados via JS -->
+                </ul>
+            </div>
+            
