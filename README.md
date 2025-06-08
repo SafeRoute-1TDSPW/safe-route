@@ -29,4 +29,14 @@ Plataforma web para gestão de abrigos durante emergências, com funcionalidades
 Temos duas entregas:
 
 - Site principal(Voltada para os administradores(Defesa Civil/ONGs))
-- Aplicativo(Aplicação Cidadão): Voltada para a populacao(usuario final)
+- Aplicativo(Aplicação Cidadão): Voltada para a populacao(usuario)
+
+## 🚀 Como Contribuir
+
+1) Faça um fork do projeto
+
+2) Crie sua branch (git checkout -b feature/foo)
+
+3) Commit suas mudanças (git commit -m 'Add foo')
+
+4) Push para a branch (git push origin feature/foo)
