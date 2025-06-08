@@ -172,7 +172,7 @@
                         <span><strong>Abrigo B:</strong> Ginásio Público, Av. Y, 50. Capacidade: 300 (280 ocupados)</span>
                     </li>
                 </ul>
-                <button class="button primary-button mt-4">Adicionar Novo Abrigo</button>
+                <button id="openShelterModal" class="button primary-button mt-4">Adicionar Novo Abrigo</button>
             </div>
         </section>
 
@@ -348,12 +348,43 @@
             </div>
         </section>
     </main>
+
+    <!-- Modal para adicionar novo abrigo -->
+    <div id="shelterModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Adicionar Novo Abrigo</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="shelterForm" class="form-layout">
+                    <div class="form-group">
+                        <label for="shelter-name">Nome do Abrigo:</label>
+                        <input type="text" id="shelter-name" name="name" class="form-input" required />
+                        <div class="error-message" id="shelter-name-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="shelter-address">Endereço:</label>
+                        <textarea id="shelter-address" name="address" rows="3" class="form-input" required></textarea>
+                        <div class="error-message" id="shelter-address-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="shelter-capacity">Capacidade (opcional):</label>
+                        <input type="number" id="shelter-capacity" name="capacity" class="form-input" min="1" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelShelter" class="button secondary-button">Cancelar</button>
+                <button id="saveShelter" class="button primary-button">Salvar Abrigo</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-
             const navLinks = document.querySelectorAll('.nav-link');
             const pageSections = document.querySelectorAll('.page-section');
-
 
             // Function to show the active page
             function showPage(pageId) {
@@ -473,6 +504,64 @@
                         notificationForm.reset();
                     }
                 });
+            }
+
+            // Modal para adicionar abrigo
+            const modal = document.getElementById("shelterModal");
+            const btn = document.getElementById("openShelterModal");
+            const span = document.getElementsByClassName("close")[0];
+            const cancelBtn = document.getElementById("cancelShelter");
+            const saveBtn = document.getElementById("saveShelter");
+
+            // Abrir modal
+            btn.onclick = function() {
+                modal.style.display = "block";
+            }
+
+            // Fechar modal ao clicar no X
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // Fechar modal ao clicar no botão Cancelar
+            cancelBtn.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // Fechar modal ao clicar fora dele
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            // Salvar abrigo
+            saveBtn.onclick = function() {
+                const nameInput = document.getElementById('shelter-name');
+                const addressInput = document.getElementById('shelter-address');
+                
+                document.getElementById('shelter-name-error').textContent = '';
+                document.getElementById('shelter-address-error').textContent = '';
+                
+                let isValid = true;
+                
+                if (nameInput.value.trim() === '') {
+                    document.getElementById('shelter-name-error').textContent = 'O nome do abrigo é obrigatório.';
+                    isValid = false;
+                }
+                
+                if (addressInput.value.trim() === '') {
+                    document.getElementById('shelter-address-error').textContent = 'O endereço é obrigatório.';
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // Aqui você pode adicionar a lógica para salvar o abrigo
+                    alert('Abrigo adicionado com sucesso!');
+                    document.getElementById('shelterForm').reset();
+                    modal.style.display = "none";
+                    
+                }
             }
 
             // Initial setup: show dashboard and activate corresponding link
