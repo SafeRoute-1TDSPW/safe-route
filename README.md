@@ -28,5 +28,5 @@ Plataforma web para gestão de abrigos durante emergências, com funcionalidades
  
 Temos duas entregas:
 
-- Site principal
-- Aplicativo(Aplicação Cidadão): Voltada para os usuarios
+- Site principal(Voltada para os administradores(Defesa Civil/ONGs))
+- Aplicativo(Aplicação Cidadão): Voltada para a populacao(usuario final)
