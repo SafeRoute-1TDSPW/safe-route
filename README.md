@@ -1,20 +1,24 @@
 # safe-route
 
-# SafeRoute - Sistema de Gerenciamento de Abrigos em Emergências
+# SafeRoute - Sistema de Gerenciamento de Abrigos para Desastres Naturais e Comunidades
 
 ## 📌 Visão Geral
-Plataforma web para gestão de abrigos durante emergências, com funcionalidades de:
+Plataforma web para gestão de abrigos durante emergências
+
+## 🚀 Funcionalidades Principais
 - Mapeamento de abrigos
 - Alertas à população
 - Coordenação de voluntários
-- Análise de dados geográficos
+- Análise de dados geográficos e de tempo
+- Gestão de abrigos e suprimentos
 
-## 🚀 Funcionalidades Principais
 
 ### 🏠 Dashboard
 - Métricas em tempo real
 - Mapa interativo (integração futura)
 - Histórico de notificações
+- Acompanhamento de suprimentos
+- Abrigos nas proximidades
 
 ### 🏡 Gerenciamento de Abrigos
 | Feature             | Descrição                                                     |
