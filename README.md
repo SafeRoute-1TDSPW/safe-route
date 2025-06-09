@@ -20,7 +20,7 @@ Plataforma web para gestão de abrigos durante emergências
 - Acompanhamento de suprimentos
 - Abrigos nas proximidades
 
-### Visão Geral da Solução: O que é o Safe Route?**
+### Visão Geral da Solução: O que é o Safe Route?
 O **Safe Route** é uma plataforma abrangente e intuitiva projetada para otimizar a gestão de abrigos, a comunicação em tempo real e a coordenação de recursos durante desastres naturais. Desenvolvida para capacitar a Defesa Civil e os gestores de abrigos, a solução garante que informações críticas cheguem rapidamente à população em risco, promovendo segurança, clareza e eficiência em momentos de crise.
 
 ### Nossa Proposta: Safe Route:
