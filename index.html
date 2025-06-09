@@ -6,6 +6,8 @@
     <title>SafeRoute</title>
     <!-- Vincula o arquivo CSS externo -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Google Maps JavaScript API (substituir YOUR_API_KEY pela chave real) -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
 </head>
 <body>
     <!-- Cabeçalho Principal (Menu Superior) -->
@@ -73,6 +75,80 @@
         </nav>
     
     </header>
+
+    <!-- Botão de Menu para Mobile (Hamburger) -->
+        <button id="mobile-menu-button" class="mobile-menu-button">
+            <span class="icon-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </span>
+        </button>
+    </header>
+
+    <!-- Overlay do Menu Mobile (Tela Cheia) -->
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay">
+        <button id="close-mobile-menu-button" class="close-mobile-menu-button">
+            <span class="icon-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </span>
+        </button>
+        <nav>
+            <a href="#" data-page="dashboard" class="nav-link mobile-nav-link">
+                <span class="icon-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </span>
+                <span>Página Inicial</span>
+            </a>
+            <a href="#" data-page="shelters" class="nav-link mobile-nav-link">
+                <span class="icon-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                <span>Abrigos</span>
+            </a>
+            <a href="#" data-page="add-shelter-modal-trigger" class="nav-link mobile-nav-link">
+                <span class="icon-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H7l-3 8h18l-3 8z"/></svg>
+                </span>
+                <span>Novo Abrigo</span>
+            </a>
+            <a href="#" data-page="notifications" class="nav-link mobile-nav-link">
+                <span class="icon-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.36 17.06a2 2 0 1 0 3.28 0"/><path d="M12 21v-4"/></svg>
+                </span>
+                <span>Notificações</span>
+            </a>
+            <a href="#" data-page="analytics" class="nav-link mobile-nav-link">
+                <span class="icon-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bar-chart-2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+                </span>
+                <span>Análises Geos.</span>
+            </a>
+            <a href="#" data-page="volunteers" class="nav-link mobile-nav-link">
+                <span class="icon-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase"><path d="M12.5 22H4a2 2 0 0 1-2-2V7.76a2 2 0 0 1 .62-1.46L6.5 2.5a2 2 0 0 1 1.5-1.5h7a2 2 0 0 1 2 2v2.5L21.4 6.33a2 2 0 0 1 .6 1.43V20a2 2 0 0 1-2 2h-6.5"/><path d="M22 6H2"/><path d="M6 6v2"/><path d="M18 6v2"/></svg>
+                </span>
+                <span>Voluntários</span>
+            </a>
+            <a href="#" data-page="members" class="nav-link mobile-nav-link">
+                <span class="icon-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </span>
+                <span>Integrantes</span>
+            </a>
+            <a href="#" data-page="faq" class="nav-link mobile-nav-link">
+                <span class="icon-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-help-circle"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+                </span>
+                <span>FAQ</span>
+            </a>
+            <a href="#" data-page="contact" class="nav-link mobile-nav-link">
+                <span class="icon-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </span>
+                <span>Contato</span>
+            </a>
+        </nav>
+    </div>
+    
     <!-- Conteúdo Principal -->
     <main class="main-content-area">
         <!-- Página Inicial (Dashboard) -->
